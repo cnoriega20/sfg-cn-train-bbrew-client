@@ -37,4 +37,12 @@ public class BeerServiceClient {
         System.out.println("Inside client saveBeer: " + apiHost + BEER_SERVICE_PATH_V1);
         return restTemplate.postForLocation(apiHost + BEER_SERVICE_PATH_V1, beer);
     }
+
+    public void updateBeer(UUID uuid, Beer beer){
+        restTemplate.put(apiHost + BEER_SERVICE_PATH_V1 + "/" +uuid.toString(), beer);
+    }
+
+    public void deleteBeer(UUID uuid){
+        restTemplate.delete(apiHost + BEER_SERVICE_PATH_V1 + "/" + uuid);
+    }
 }

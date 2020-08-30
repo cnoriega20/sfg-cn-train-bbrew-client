@@ -30,4 +30,17 @@ class BeerServiceClientTest {
         assertNotNull(uri);
         System.out.println("Post save Beer uri: " + uri.toString());
     }
+
+    @Test
+    void testUpdateBeer(){
+        Beer beer = Beer.builder().beerName("Polks").build();
+        beerServiceClient.updateBeer(UUID.randomUUID(), beer);
+    }
+
+    @Test
+    void testDeleteBeer(){
+        beerServiceClient.deleteBeer(UUID.randomUUID());
+    }
+
+
 }

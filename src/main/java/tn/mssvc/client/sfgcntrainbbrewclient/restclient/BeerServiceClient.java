@@ -1,4 +1,4 @@
-package tn.mssvc.client.sfgcntrainbbrewclient.restcient;
+package tn.mssvc.client.sfgcntrainbbrewclient.restclient;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -39,7 +39,7 @@ public class BeerServiceClient {
     }
 
     public void updateBeer(UUID uuid, Beer beer){
-        restTemplate.put(apiHost + BEER_SERVICE_PATH_V1 + "/" +uuid.toString(), beer);
+        restTemplate.put(apiHost + BEER_SERVICE_PATH_V1 + "/" + uuid.toString(), beer);
     }
 
     public void deleteBeer(UUID uuid){

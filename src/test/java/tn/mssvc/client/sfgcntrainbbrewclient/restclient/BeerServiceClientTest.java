@@ -1,4 +1,4 @@
-package tn.mssvc.client.sfgcntrainbbrewclient.restcient;
+package tn.mssvc.client.sfgcntrainbbrewclient.restclient;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ class BeerServiceClientTest {
 
     @Test
     void testUpdateBeer(){
-        Beer beer = Beer.builder().beerName("Polks").build();
+        Beer beer = Beer.builder().beerName("Juninho").build();
         beerServiceClient.updateBeer(UUID.randomUUID(), beer);
     }
 

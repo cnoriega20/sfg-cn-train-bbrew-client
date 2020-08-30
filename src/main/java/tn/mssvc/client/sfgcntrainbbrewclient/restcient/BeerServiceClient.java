@@ -11,7 +11,7 @@ import java.util.UUID;
 @Component
 @ConfigurationProperties(value = "cn.brewery", ignoreUnknownFields = false)
 public class BeerServiceClient {
-    public final String BEER_SERVICE_PATH_V1 = "/api/v1/beerService";
+    public final String BEER_SERVICE_PATH_V1 = "/api/v1/beerService/";
     private String apiHost;
 
     private final RestTemplate restTemplate;

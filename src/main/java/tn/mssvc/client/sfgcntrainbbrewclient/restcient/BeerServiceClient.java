@@ -28,4 +28,7 @@ public class BeerServiceClient {
     }
 
 
+    public void setApiHost(String apiHost) {
+        this.apiHost = apiHost;
+    }
 }

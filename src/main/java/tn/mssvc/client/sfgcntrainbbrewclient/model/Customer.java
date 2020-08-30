@@ -1,4 +1,4 @@
-package tn.mssvc.client.model;
+package tn.mssvc.client.sfgcntrainbbrewclient.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

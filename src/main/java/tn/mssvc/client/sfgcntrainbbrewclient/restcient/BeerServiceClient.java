@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import tn.mssvc.client.sfgcntrainbbrewclient.model.Beer;
 
+import java.net.URI;
 import java.util.UUID;
 
 @Component
@@ -21,14 +22,19 @@ public class BeerServiceClient {
         this.restTemplate = restTemplateBuilder.build();
     }
 
+    public void setApiHost(String apiHost) {
+        this.apiHost = apiHost;
+    }
+
     // Rest Client GET method
     public Beer getBeerById(UUID uuid){
         return restTemplate.getForObject(apiHost + BEER_SERVICE_PATH_V1
                 + uuid.toString(), Beer.class);
     }
 
-
-    public void setApiHost(String apiHost) {
-        this.apiHost = apiHost;
+    // REST client POST method returning the Resource URI
+    public URI saveBeer(Beer beer){
+        System.out.println("Inside client saveBeer: " + apiHost + BEER_SERVICE_PATH_V1);
+        return restTemplate.postForLocation(apiHost + BEER_SERVICE_PATH_V1, beer);
     }
 }

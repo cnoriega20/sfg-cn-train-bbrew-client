@@ -12,17 +12,24 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component// Comment only to test NIORestTemplateCustomizer
+
 public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
+
+    private final RestTemplateConfigurationProperties restTemplateConfigurationProperties;
+
+    public BlockingRestTemplateCustomizer(RestTemplateConfigurationProperties restTemplateConfigurationProperties) {
+        this.restTemplateConfigurationProperties = restTemplateConfigurationProperties;
+    }
 
     public ClientHttpRequestFactory clientHttpRequestFactory(){
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(100);
-        connectionManager.setDefaultMaxPerRoute(20);
+        connectionManager.setMaxTotal(restTemplateConfigurationProperties.getMaxTotalConnections());
+        connectionManager.setDefaultMaxPerRoute(restTemplateConfigurationProperties.getDefaultMaxTotalConnections());
 
         RequestConfig requestConfig = RequestConfig
                 .custom()
-                .setConnectionRequestTimeout(3000)
-                .setSocketTimeout(3000)
+                .setConnectionRequestTimeout(restTemplateConfigurationProperties.getConnectionRequestTimeOut())
+                .setSocketTimeout(restTemplateConfigurationProperties.getSocketTimeOut())
                 .build();
 
         CloseableHttpClient httpClient = HttpClients
